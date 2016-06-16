@@ -22,14 +22,30 @@ class mvvmTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//        http().header([
+//            "Content-Type":"application/json",
+//            "X-LC-Id":"OMmHuevA9FzseHV6B6OA229M-gzGzoHsz",
+//            "X-LC-Key":"5dGiqJbb3M13oPCRGiwJQs2f"
+//            ]).get("https://api.leancloud.cn/1.1/login", params: ["username":"yinhao","password":"123123"]) { (data, response, error) in
+//                print(try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments))
+//            }.sync {
+//                    print("complete")
+//        }
+        http().header([
+            "Content-Type":"application/json",
+            "apikey":"cc6292bdbd0b8fc836480104219a2522"
+            ]).get("http://apis.baidu.com/apistore/idservice/id", params: ["id":"340403199207021416"]) { (data, response, error) in
+                let rep = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+            }.sync {
+                print("complete")
+        }
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
-            // Put the code you want to measure the time of here.
+            
+
         }
     }
     

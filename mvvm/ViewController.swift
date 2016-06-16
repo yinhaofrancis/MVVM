@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var btn: UIButton!
+    
+    @IBOutlet weak var btn2: UIButton!
     var vm = test()
 //    var timer:dispatch_source_t?
     override func viewDidLoad() {
@@ -21,12 +23,13 @@ class ViewController: UIViewController {
         vm.sd.register("sh").doSomeThing { [unowned self] in
             self.label.hidden = $0!}
         vm.cli <~ btn
+        vm.cli2 <~ btn2
     }
     @IBAction func haha(sender: AnyObject) {
         if label.text == nil{
-            label.text = "haha"
+            label.text = "haha\n"
         }else{
-            label.text = label.text! + "\nhaha"
+            label.text = label.text! + "haha\n"
         }
     }
 }

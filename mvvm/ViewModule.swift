@@ -7,8 +7,10 @@
 //
 
 import UIKit
+
 // MARK: - viewModule
 class ViewModule {
+    static let backqueue = dispatch_queue_create("com.YH.ViewModuleQueue", DISPATCH_QUEUE_SERIAL)
     func bind(k: ()->Void){
         k()
     }
@@ -39,11 +41,11 @@ class property<T>{
 }
 // MARK: - 命令
 class command{
-    var queue:dispatch_queue_t?
+    var queue:dispatch_queue_t? = ViewModule.backqueue
     var call:((sender:NSObject)->Void)?
     @objc func doSomething(sender:NSObject){
         if queue != nil{
-            dispatch_async(queue!, { [weak self] in
+            asyncRun(queue!, clusure: { [weak self] in
                 if self == nil{
                     return
                 }
@@ -71,7 +73,7 @@ func ^=<T>(pro:property<T>,value:T){
     if NSThread.isMainThread(){
         pro.value = value
     }else{
-        dispatch_async(dispatch_get_main_queue(), { 
+        asyncMainRun({
             pro.value = value
         })
     }
@@ -89,9 +91,6 @@ class observer<T>{
     var currentID = ""
     func doSomeThing(exc:(T?)->Void){
         self.excs[currentID] = exc
-    }
-    func set(exc:(T?)->T){
-        
     }
     func go(value:T?){
         excs.forEach { (a) in
