@@ -7,45 +7,37 @@
 //
 
 import UIKit
-
+import CoreData
 class test: ViewModule {
     var name = property<String>(v: "")
     var sd = property<Bool>(v: true)
-    var cli = command()
-    var cli2 = command()
-    
+    var insert = command()
+    var query = command()
+    var update = command()
+    var delete = command()
     override init() {
         super.init()
-        let t = timer(timerinteval: 1)
-
-        cli.action {[unowned self](sender) in
-            print("haha")
-            var k = 0
-            _ = try? t.run {
-                print("timer:\(k)")
-                k += 1
-                if k == 10{
-                    self.name ^= ""
-                    k = 0
-                }
-            }
+        let k = CoreDataProvide.shareInstace()
+        insert.action {(sender) in
+            k.insert(["name":"yinhao","password":"123123","createdAt":NSDate(),"updatedAt":NSDate()], type: "User")
         }
-        cli2.action { (sender) in
-            var k = user()
-            k.name  = "Francis"
-            k.age = 24
-            k.phoneNum = "13915411914"
-            print(user.getjson(k))
-            
+        var user:User?
+        query.action { (sender) in
+            k.query("User", condition: nil, result: { (data) in
+                user = data![0] as? User
+                print(user?.name)
+            })
+        }
+        update.action { (sender) in
+            user?.name = "尹豪"
+            user?.update(k)
+        }
+        delete.action { (sender) in
+            user?.del(k)
         }
         
     }
     @objc func clean(){
         name ^= ""
     }
-}
-class user:module{
-    var name:String?
-    var age:UInt?
-    var phoneNum:String?
 }

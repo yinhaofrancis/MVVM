@@ -11,9 +11,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
-    @IBOutlet weak var btn: UIButton!
+    @IBOutlet weak var insert: UIButton!
     
-    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var query: UIButton!
+    @IBOutlet weak var update: UIButton!
+    
+    @IBOutlet weak var delete: UIButton!
     var vm = test()
 //    var timer:dispatch_source_t?
     override func viewDidLoad() {
@@ -22,8 +25,10 @@ class ViewController: UIViewController {
             self.label.text = $0}
         vm.sd.register("sh").doSomeThing { [unowned self] in
             self.label.hidden = $0!}
-        vm.cli <~ btn
-        vm.cli2 <~ btn2
+        vm.insert <~ insert
+        vm.query <~ query
+        vm.update <~ update
+        vm.delete <~ delete
     }
     @IBAction func haha(sender: AnyObject) {
         if label.text == nil{

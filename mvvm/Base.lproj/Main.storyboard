@@ -54,18 +54,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anc-ce-9aQ">
-                                <rect key="frame" x="20" y="562" width="276" height="30"/>
+                                <rect key="frame" x="20" y="562" width="132" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ncs-a1-cXm"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="insert"/>
                                 <connections>
                                     <action selector="haha:" destination="slb-Lm-Q7K" eventType="touchUpInside" id="31w-Ri-pAD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3X-9B-fnV">
-                                <rect key="frame" x="304" y="562" width="276" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="160" y="562" width="132" height="30"/>
+                                <state key="normal" title="query"/>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rg7-qQ-1vz">
                                 <rect key="frame" x="0.0" y="64" width="600" height="490"/>
@@ -84,12 +84,26 @@
                                     <constraint firstItem="Q6d-gg-hen" firstAttribute="leading" secondItem="rg7-qQ-1vz" secondAttribute="leading" id="e1g-5t-mY6"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyK-Ow-L9z">
+                                <rect key="frame" x="440" y="562" width="132" height="30"/>
+                                <state key="normal" title="delete"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWT-bU-lma">
+                                <rect key="frame" x="300" y="562" width="132" height="30"/>
+                                <state key="normal" title="update"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U3X-9B-fnV" firstAttribute="top" secondItem="rg7-qQ-1vz" secondAttribute="bottom" constant="8" id="9me-Na-NpF"/>
                             <constraint firstItem="rg7-qQ-1vz" firstAttribute="leading" secondItem="0De-wc-ZC2" secondAttribute="leading" id="Bhf-zJ-bB3"/>
+                            <constraint firstItem="U3X-9B-fnV" firstAttribute="top" secondItem="rg7-qQ-1vz" secondAttribute="bottom" constant="8" id="BnX-v8-62r"/>
+                            <constraint firstItem="3oO-G4-bi4" firstAttribute="top" secondItem="MWT-bU-lma" secondAttribute="bottom" constant="8" id="EXL-PD-M1O"/>
                             <constraint firstItem="rg7-qQ-1vz" firstAttribute="top" secondItem="e5A-Z6-qrs" secondAttribute="bottom" id="FaR-gN-Igz"/>
+                            <constraint firstItem="hyK-Ow-L9z" firstAttribute="leading" secondItem="MWT-bU-lma" secondAttribute="trailing" constant="8" id="JRv-c0-mzj"/>
+                            <constraint firstItem="MWT-bU-lma" firstAttribute="top" secondItem="rg7-qQ-1vz" secondAttribute="bottom" constant="8" id="K3v-2h-X4p"/>
+                            <constraint firstItem="MWT-bU-lma" firstAttribute="width" secondItem="U3X-9B-fnV" secondAttribute="width" id="LWz-1S-lpI"/>
+                            <constraint firstItem="3oO-G4-bi4" firstAttribute="top" secondItem="U3X-9B-fnV" secondAttribute="bottom" constant="8" id="XUp-8E-OR8"/>
                             <constraint firstItem="3oO-G4-bi4" firstAttribute="top" secondItem="U3X-9B-fnV" secondAttribute="bottom" constant="8" id="Xz3-PA-Jzi"/>
                             <constraint firstItem="Anc-ce-9aQ" firstAttribute="top" secondItem="rg7-qQ-1vz" secondAttribute="bottom" constant="8" id="Yuf-FV-CIr"/>
                             <constraint firstItem="U3X-9B-fnV" firstAttribute="leading" secondItem="Anc-ce-9aQ" secondAttribute="trailing" constant="8" id="aT4-8X-Wi0"/>
@@ -97,18 +111,25 @@
                             <constraint firstItem="Anc-ce-9aQ" firstAttribute="top" secondItem="rg7-qQ-1vz" secondAttribute="bottom" constant="8" id="c5W-RK-HG2"/>
                             <constraint firstItem="Anc-ce-9aQ" firstAttribute="leading" secondItem="0De-wc-ZC2" secondAttribute="leadingMargin" id="cEo-Ie-rGH"/>
                             <constraint firstItem="Anc-ce-9aQ" firstAttribute="leading" secondItem="0De-wc-ZC2" secondAttribute="leadingMargin" id="dId-jq-QTD"/>
+                            <constraint firstItem="MWT-bU-lma" firstAttribute="leading" secondItem="U3X-9B-fnV" secondAttribute="trailing" constant="8" id="fcZ-AX-8hJ"/>
+                            <constraint firstItem="U3X-9B-fnV" firstAttribute="leading" secondItem="Anc-ce-9aQ" secondAttribute="trailing" constant="8" id="g55-Hi-56A"/>
+                            <constraint firstItem="3oO-G4-bi4" firstAttribute="top" secondItem="hyK-Ow-L9z" secondAttribute="bottom" constant="8" id="ihO-Uc-Fn1"/>
                             <constraint firstItem="3oO-G4-bi4" firstAttribute="top" secondItem="Anc-ce-9aQ" secondAttribute="bottom" constant="8" id="ive-ww-643"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hyK-Ow-L9z" secondAttribute="trailing" constant="8" id="nEU-a5-PlN"/>
                             <constraint firstItem="U3X-9B-fnV" firstAttribute="leading" secondItem="Anc-ce-9aQ" secondAttribute="trailing" constant="8" id="oLE-Nf-Gl5"/>
-                            <constraint firstItem="U3X-9B-fnV" firstAttribute="trailing" secondItem="0De-wc-ZC2" secondAttribute="trailingMargin" id="osm-eC-ULp"/>
+                            <constraint firstItem="hyK-Ow-L9z" firstAttribute="top" secondItem="rg7-qQ-1vz" secondAttribute="bottom" constant="8" id="qFq-Kn-xfa"/>
                             <constraint firstItem="U3X-9B-fnV" firstAttribute="width" secondItem="Anc-ce-9aQ" secondAttribute="width" id="sf7-EZ-a5j"/>
                             <constraint firstAttribute="trailing" secondItem="rg7-qQ-1vz" secondAttribute="trailing" id="wUB-T5-1z5"/>
+                            <constraint firstItem="hyK-Ow-L9z" firstAttribute="width" secondItem="U3X-9B-fnV" secondAttribute="width" id="yeN-tm-aSa"/>
                             <constraint firstItem="Q6d-gg-hen" firstAttribute="width" secondItem="0De-wc-ZC2" secondAttribute="width" id="z5U-L8-CRr"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btn" destination="Anc-ce-9aQ" id="3NO-xo-lTj"/>
-                        <outlet property="btn2" destination="U3X-9B-fnV" id="ic3-XO-gq6"/>
+                        <outlet property="delete" destination="hyK-Ow-L9z" id="OAV-bR-5mq"/>
+                        <outlet property="insert" destination="Anc-ce-9aQ" id="csZ-uo-MWF"/>
                         <outlet property="label" destination="Q6d-gg-hen" id="BAG-31-SZi"/>
+                        <outlet property="query" destination="U3X-9B-fnV" id="d9z-AM-EZH"/>
+                        <outlet property="update" destination="MWT-bU-lma" id="BaZ-8H-dfA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OV0-Vq-XqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
