@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20706671D1584020032B2F3 /* netProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20706661D1584020032B2F3 /* netProvider.swift */; };
 		B22E04B11D1254BD00520E73 /* thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E04B01D1254BD00520E73 /* thread.swift */; };
 		B22E04B31D12551800520E73 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E04B21D12551800520E73 /* http.swift */; };
 		B22E04B51D12A37900520E73 /* module.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E04B41D12A37900520E73 /* module.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B20706661D1584020032B2F3 /* netProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = netProvider.swift; sourceTree = "<group>"; };
 		B22E04B01D1254BD00520E73 /* thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = thread.swift; sourceTree = "<group>"; };
 		B22E04B21D12551800520E73 /* http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
 		B22E04B41D12A37900520E73 /* module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = module.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				B289711A1D10E68800BF2632 /* Info.plist */,
 				B22E04B41D12A37900520E73 /* module.swift */,
 				B2EF58DB1D13A51200415880 /* DBProvide.swift */,
+				B20706661D1584020032B2F3 /* netProvider.swift */,
 				B2EF58DD1D13B97900415880 /* data.xcdatamodeld */,
 				B2EF58E01D13DF7000415880 /* User+CoreDataProperties.swift */,
 				B2EF58E11D13DF7000415880 /* User.swift */,
@@ -289,6 +292,7 @@
 				B28971411D10FEAA00BF2632 /* test.swift in Sources */,
 				B22E04B11D1254BD00520E73 /* thread.swift in Sources */,
 				B289713D1D10F70F00BF2632 /* ViewController.swift in Sources */,
+				B20706671D1584020032B2F3 /* netProvider.swift in Sources */,
 				B289710D1D10E68800BF2632 /* AppDelegate.swift in Sources */,
 				B22E04B51D12A37900520E73 /* module.swift in Sources */,
 				B2EF58E21D13DF7000415880 /* User+CoreDataProperties.swift in Sources */,

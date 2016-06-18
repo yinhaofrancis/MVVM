@@ -87,10 +87,10 @@ public class http:NSObject,NSURLSessionTaskDelegate{
         return noGet("post", urlstr: urlstr, data: json, handle: handle)
     }
     public func delete(urlstr:String,json:[String:AnyObject],handle:(NSData?,NSHTTPURLResponse?,NSError?)->Void) -> http {
-        return noGet("post", urlstr: urlstr, data: json, handle: handle)
+        return noGet("delete", urlstr: urlstr, data: json, handle: handle)
     }
     public func put(urlstr:String,json:[String:AnyObject],handle:(NSData?,NSHTTPURLResponse?,NSError?)->Void) -> http {
-        return noGet("post", urlstr: urlstr, data: json, handle: handle)
+        return noGet("put", urlstr: urlstr, data: json, handle: handle)
     }
     public func header(header:[String:String])->http{
         for i in header{

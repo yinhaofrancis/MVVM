@@ -33,9 +33,9 @@ class test: ViewModule {
             user?.update(k)
         }
         delete.action { (sender) in
-            k.count("User", condition: nil, Count: { (n) in
-                print(n)
-            })
+            http().get("https://www.qq.com", params: [:], handle: { (data, response, error) in
+                print(response?.statusCode)
+            }).async()
         }
         
     }

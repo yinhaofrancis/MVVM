@@ -62,7 +62,7 @@ public  class module: NSObject,jsonmodule,modifimodule,loadmodule {
     }
 }
 public class Condition:NSObject{
-    init(page:Int?,limit:Int?,compare:String?) {
+    init(page:Int?,limit:Int?,compare:(key:String,op:String,value:String)?) {
         super.init()
         self.page = page
         self.limit = limit
@@ -70,7 +70,7 @@ public class Condition:NSObject{
     }
     var page:Int?
     var limit:Int?
-    var compare:String?
+    var compare:(key:String,op:String,value:String)?
 }
 func  + <T,Y>(a:[T:Y],b:[T:Y])->[T:Y]{
     var result = a
