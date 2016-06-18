@@ -134,19 +134,13 @@ public class CoreDataProvide:NSObject,dataProvide{
         super.init()
     }
     public func query(name:String,condition:Condition?,result:(data:[jsonmodule]?)->Void){
-        let fetch = NSFetchRequest(entityName: name)
-        if condition != nil{
-            if condition?.limit != nil && condition?.page != nil{
-                fetch.fetchLimit = condition!.limit!
-                fetch.fetchOffset = condition!.page! * condition!.limit!
+       let fetch = NSFetchRequest.make(condition, entity: name)
+        asyncRun(CoreDataProvide.queue, clusure: {[weak self] in
+            if self == nil{
+                return
             }
-            if condition?.compare != nil{
-                fetch.predicate = NSPredicate(format: condition!.compare!, argumentArray: nil)
-            }
-        }
-        asyncRun(CoreDataProvide.queue, clusure: {
             do{
-                let array = try self.stack.managedObjectContext.executeFetchRequest(fetch)
+                let array = try self!.stack.managedObjectContext.executeFetchRequest(fetch)
                 result(data: array as? [jsonmodule])
             }catch{
                 result(data: nil)
@@ -155,32 +149,42 @@ public class CoreDataProvide:NSObject,dataProvide{
         
     }
     public func insert(m:[String:AnyObject],type:String) {
-        
-        dispatch_async(CoreDataProvide.queue) { [weak self] in
-            
+        asyncRun(CoreDataProvide.queue) { [weak self] in
             if self != nil{
                 let desc = NSEntityDescription.entityForName(type, inManagedObjectContext: self!.stack.managedObjectContext)
                 let k = NSManagedObject(entity: desc!, insertIntoManagedObjectContext: self!.stack.managedObjectContext)
                 k.setjson(m)
                 self!.stack.saveContext()
             }
+
         }
     }
     public func update(m: jsonmodule, type: String) {
-        dispatch_async(CoreDataProvide.queue) { [weak self] in
+        asyncRun(CoreDataProvide.queue) { [weak self] in
             if self != nil{
                 self!.stack.saveContext()
             }
         }
-        
     }
-    public func delete(m: jsonmodule, type: String) {
-        dispatch_async(CoreDataProvide.queue) { [weak self] in
+    public func count(type: String, condition: Condition?,Count:(NSNumber?)->Void) {
+        let request = NSFetchRequest.make(condition, entity: type)
+        asyncRun(CoreDataProvide.queue) {[weak self] in
+            if self != nil{
+                var error: NSError?
+                let count = self?.stack.managedObjectContext.countForFetchRequest(request, error: &error)
+                Count(count)
+                if error != nil{
+                    print(error)
+                }
+            }
+        }
+    }
+    public func del(m: jsonmodule, type: String) {
+        asyncRun(CoreDataProvide.queue) { [weak self] in
             if self != nil{
                 self!.stack.managedObjectContext.deleteObject((m as! NSManagedObject))
                 self!.stack.saveContext()
             }
-            
         }
         
     }
@@ -191,3 +195,19 @@ public class CoreDataProvide:NSObject,dataProvide{
         return CoreDataStack()
     }()
 }
+ extension NSFetchRequest{
+    class func  make(condition:Condition?,entity:String)-> NSFetchRequest{
+        let fetch = NSFetchRequest(entityName: entity)
+        if condition == nil{
+            return fetch
+        }
+        if condition!.limit != nil && condition!.page != nil{
+            fetch.fetchLimit = condition!.limit!
+            fetch.fetchOffset = condition!.page! * condition!.limit!
+        }
+        if condition!.compare != nil{
+            fetch.predicate = NSPredicate(format: condition!.compare!, argumentArray: nil)
+        }
+        return fetch
+    }
+ }

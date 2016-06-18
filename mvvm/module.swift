@@ -24,7 +24,10 @@ import Foundation
     optional func query(name:String,condition:Condition?,data:([jsonmodule]?)->Void)
     optional func insert(m:[String:AnyObject],type:String)
     optional func update(m:jsonmodule,type:String)
+    optional func updateCondition(condtion:Condition?,type:String)
+    optional func delCondition(condition:Condition?,type:String)
     optional func del(m:jsonmodule,type:String)
+    optional func count(type:String,condition:Condition?,Count:(NSNumber?)->Void)
     optional func save()
 }
 public  class module: NSObject,jsonmodule,modifimodule,loadmodule {

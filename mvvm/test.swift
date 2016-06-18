@@ -33,7 +33,9 @@ class test: ViewModule {
             user?.update(k)
         }
         delete.action { (sender) in
-            user?.del(k)
+            k.count("User", condition: nil, Count: { (n) in
+                print(n)
+            })
         }
         
     }
