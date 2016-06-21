@@ -18,6 +18,7 @@ class test: ViewModule {
     override init() {
         super.init()
         let k = CoreDataProvide.shareInstace()
+        let h = http()
         insert.action {(sender) in
             k.insert(["name":"yinhao","password":"123123","createdAt":NSDate(),"updatedAt":NSDate()], type: "User")
         }
@@ -29,11 +30,18 @@ class test: ViewModule {
             })
         }
         update.action { (sender) in
-            user?.name = "尹豪"
-            user?.update(k)
+            h.get("http://www.baidu.com", params: [:], handle: { (data, response, error) in
+                print(response?.statusCode)
+            }).async()
+            h.get("https://www.qq.com", params: [:], handle: { (data, response, error) in
+                print(response?.statusCode)
+            }).sync(10, complete: { (success) in
+                print("success",success)
+            })
+            
         }
         delete.action { (sender) in
-            http().get("https://www.qq.com", params: [:], handle: { (data, response, error) in
+            h.get("http://www.baidu.com", params: [:], handle: { (data, response, error) in
                 print(response?.statusCode)
             }).async()
         }
