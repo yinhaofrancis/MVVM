@@ -7,11 +7,21 @@
 		<key>mvvm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B24B6F211D1A778F005F44A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B24B6F2A1D1A778F005F44A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B28971081D10E68800BF2632</key>
 		<dict>
 			<key>primary</key>
