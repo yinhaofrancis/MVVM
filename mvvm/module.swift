@@ -7,30 +7,26 @@
 //
 
 import Foundation
-@objc public protocol jsonmodule {
+@objc public protocol jsonModule {
     func setjson(json: [String : AnyObject])
     optional func getjson()-> [String : AnyObject]
-}
-@objc public protocol modifimodule{
     optional func update(provide:dataProvide)
     optional func del(provide:dataProvide)
     optional static func insert(json:[String : AnyObject],provide:dataProvide)
-}
-@objc public protocol loadmodule{
     optional func load(provide:dataProvide)
-    @objc optional static func load(provide:dataProvide,condition:Condition?,data:(([jsonmodule]?)->Void))
+    @objc optional static func load(provide:dataProvide,condition:Condition?,data:(([jsonModule]?)->Void))
 }
 @objc public protocol dataProvide{
-    optional func query(name:String,condition:Condition?,data:([jsonmodule]?)->Void)
+    optional func query(name:String,condition:Condition?,data:([jsonModule]?)->Void)
     optional func insert(m:[String:AnyObject],type:String)
-    optional func update(m:jsonmodule,type:String)
+    optional func update(m:jsonModule,type:String)
     optional func updateCondition(condtion:Condition?,type:String)
     optional func delCondition(condition:Condition?,type:String)
-    optional func del(m:jsonmodule,type:String)
+    optional func del(m:jsonModule,type:String)
     optional func count(type:String,condition:Condition?,Count:(NSNumber?)->Void)
     optional func save()
 }
-public  class module: NSObject,jsonmodule,modifimodule,loadmodule {
+public  class module: NSObject,jsonModule {
     public required override init() {
         super.init()
     }

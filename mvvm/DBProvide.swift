@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 // MARK: 拓展NSManagerObject
-extension NSManagedObject:jsonmodule,loadmodule,modifimodule{
+extension NSManagedObject:jsonModule{
     public func setjson(json: [String : AnyObject]) {
         for i in json{
             self.setValue(i.1, forKey: i.0)
@@ -123,7 +123,7 @@ public class CoreDataProvide:NSObject,dataProvide{
     override init() {
         super.init()
     }
-    public func query(name:String,condition:Condition?,result:(data:[jsonmodule]?)->Void){
+    public func query(name:String,condition:Condition?,result:(data:[jsonModule]?)->Void){
        let fetch = NSFetchRequest.make(condition, entity: name)
         asyncRun(CoreDataProvide.queue, clusure: {[weak self] in
             if self == nil{
@@ -131,7 +131,7 @@ public class CoreDataProvide:NSObject,dataProvide{
             }
             do{
                 let array = try self!.stack.managedObjectContext.executeFetchRequest(fetch)
-                result(data: array as? [jsonmodule])
+                result(data: array as? [jsonModule])
             }catch{
                 result(data: nil)
             }
@@ -149,7 +149,7 @@ public class CoreDataProvide:NSObject,dataProvide{
 
         }
     }
-    public func update(m: jsonmodule, type: String) {
+    public func update(m: jsonModule, type: String) {
         asyncRun(CoreDataProvide.queue) { [weak self] in
             if self != nil{
                 self!.stack.saveContext()
@@ -169,7 +169,7 @@ public class CoreDataProvide:NSObject,dataProvide{
             }
         }
     }
-    public func del(m: jsonmodule, type: String) {
+    public func del(m: jsonModule, type: String) {
         asyncRun(CoreDataProvide.queue) { [weak self] in
             if self != nil{
                 self!.stack.managedObjectContext.deleteObject((m as! NSManagedObject))
