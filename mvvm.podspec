@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.summary      = 'mvvm'
 
   s.platform     =  :ios, '7.0'
-  s.source       =  git: 'https://github.com/yinhaofrancis/MVVM.git'
+s.source       =  {git => 'https://github.com/yinhaofrancis/MVVM.git' branch => 'master' tag => s.version}
   s.source_files = 'mvvm/**/*'
   s.frameworks   =  'UIKit'
   s.requires_arc = true
