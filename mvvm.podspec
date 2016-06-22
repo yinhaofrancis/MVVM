@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.source_files = 'mvvm/**/*'
   s.frameworks   =  'UIKit'
   s.requires_arc = true
-  
+  s.public_header_files = 'mvvm/mvvm.h'
 # Pod Dependencies
 
 end
