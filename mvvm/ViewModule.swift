@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: - viewModule
-class ViewModule {
+// MARK: - viewModel
+class ViewModel {
     static let backqueue = dispatch_queue_create("com.YH.ViewModuleQueue", DISPATCH_QUEUE_SERIAL)
     func bind(k: ()->Void){
         k()
